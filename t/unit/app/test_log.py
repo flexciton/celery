@@ -258,9 +258,9 @@ class test_default_logger:
             assert 'foo' not in sio.getvalue()
             p.closed = False
             p.write('\n')
-            assert sio.getvalue() == ''
+            assert sio.getvalue() == '\n\n'
             write_res = p.write('foo ')
-            assert sio.getvalue() == 'foo \n'
+            assert sio.getvalue() == '\n\nfoo \n'
             assert write_res == 4
             lines = ['baz', 'xuzzy']
             p.writelines(lines)
@@ -286,9 +286,9 @@ class test_default_logger:
             assert 'foo' not in str(sio.getvalue())
             p.closed = False
             p.write(b'\n')
-            assert str(sio.getvalue()) == ''
+            assert str(sio.getvalue()) == '\n\n'
             write_res = p.write(b'foo ')
-            assert str(sio.getvalue()) == 'foo \n'
+            assert str(sio.getvalue()) == '\n\nfoo \n'
             assert write_res == 4
             p.flush()
             p.close()

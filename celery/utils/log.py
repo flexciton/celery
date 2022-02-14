@@ -227,7 +227,7 @@ class LoggingProxy:
         if data and not self.closed:
             self._thread.recurse_protection = True
             try:
-                safe_data = safe_str(data).rstrip('\n')
+                safe_data = safe_str(data)
                 if safe_data:
                     self.logger.log(self.loglevel, safe_data)
                     return len(safe_data)
